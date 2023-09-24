@@ -1,0 +1,13 @@
+[Unit]
+Description=API Service
+After=network.target
+
+[Service]
+ExecStart=/usr/api/api.py
+WorkingDirectory=/usr/api
+User=root
+Group=root
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

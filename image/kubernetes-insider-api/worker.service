@@ -1,0 +1,13 @@
+[Unit]
+Description=Kubectl port-forwarding worker
+After=network.target
+
+[Service]
+ExecStart=/usr/worker/worker.py
+WorkingDirectory=/usr/worker
+User=root
+Group=root
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

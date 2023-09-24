@@ -1,0 +1,32 @@
+services:
+  capture-kubeconfig:
+    image: ${DESKTOP_PLUGIN_IMAGE}
+    volumes:
+      - kubeconfig:/root/.kube:rw
+    healthcheck:
+      test: curl --unix-socket /run/guest-services/kubernetes-insider.sock http:/x/y/z | grep "Not Found"
+      interval: 1s
+      retries: 100
+      start_period: 1s
+      timeout: 10s
+
+  api:
+    hostname: api
+    container_name: api
+    image: spurin/kubernetes-insider-api:latest
+    privileged: true
+    volumes:
+      - kubeconfig:/kubeconfig
+    ports:
+      # Main API
+      - 31251:8000
+      # Port Forward
+      - 31252:8001
+      # Nginx (bypass CORS to port forward)
+      - 31253:8002
+    depends_on:
+      capture-kubeconfig:
+        condition: service_healthy
+
+volumes:
+  kubeconfig:

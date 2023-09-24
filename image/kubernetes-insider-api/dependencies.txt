@@ -1,0 +1,6 @@
+fastapi
+fastapi-cache2[inmemory]
+uvicorn
+requests
+kubernetes
+certifi
