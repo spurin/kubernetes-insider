@@ -169,6 +169,7 @@ export function MyApp() {
   const [type, setType] = useState<string | null>(null);
   const [target, setTarget] = useState<string | null>(null);
   const [port, setPort] = useState<string | null>("80");
+  const [path, setPath] = useState<string | null>("");
   const [namespace, setNamespace] = useState("");
   const [namespaces, setNamespaces] = useState([]);
   const [targets, setTargets] = useState<string[]>([]);
@@ -232,7 +233,8 @@ export function MyApp() {
           iframeRef.current.src = "about:blank"; // Set to about:blank first
           setTimeout(() => {
             const iframeElement = iframeRef.current as HTMLIFrameElement;
-            iframeElement.src = "http://localhost:31253"; // Then set to the actual URL
+            // Check if path is not an empty string, if not, concatenate it to the URL
+            iframeElement.src = "http://localhost:31253" + (path !== "" ? path : "");
           }, 0);
         }
       }
@@ -373,6 +375,10 @@ export function MyApp() {
 
             <Box m={1}>
               <TextField label="Port" variant="filled" value={port} onChange={(e) => setPort(e.target.value)} />
+            </Box>
+
+            <Box m={1}>
+              <TextField label="Path" variant="filled" value={path} onChange={(e) => setPath(e.target.value)} />
             </Box>
 
             <Box m={1}>
