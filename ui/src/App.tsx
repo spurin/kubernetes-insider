@@ -7,6 +7,7 @@ import { v1 } from "@docker/extension-api-client-types";
 import Typography from "@mui/material/Typography";
 import { blueGrey } from "@mui/material/colors";
 import { DockerMuiThemeProvider } from "@docker/docker-mui-theme";
+import CssBaseline from '@mui/material/CssBaseline';
 
 // Custom CSS
 import "./index.css";
@@ -115,6 +116,7 @@ function StarterPage() {
 
   return (
     <DockerMuiThemeProvider>
+    <CssBaseline />
     <Box
       sx={{
         display: "flex",
@@ -296,6 +298,7 @@ export function MyApp() {
 
   return (
     <DockerMuiThemeProvider>
+    <CssBaseline />
       <div>
         <AppBar position="static" ref={appBarRef} style={{border: 'none'}}>
           <Toolbar>
@@ -373,7 +376,7 @@ export function MyApp() {
             </Box>
 
             <Box m={1}>
-              <Button color="inherit" onClick={handleSubmit}>
+              <Button color="primary" onClick={handleSubmit}>
                 Go
               </Button>
             </Box>
