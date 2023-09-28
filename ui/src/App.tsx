@@ -315,6 +315,7 @@ export function MyApp() {
                     setTarget(null);
                     setTypes([]);
                     setTargets([]);
+                    setPath("");
                   }}
                   open={isNamespaceDropdownOpen}
                   onOpen={openNamespaceDropdown}
@@ -338,6 +339,7 @@ export function MyApp() {
                     setType(e.target.value);
                     setTarget(null);
                     setTargets([]);
+                    setPath("");
                   }}
                   open={isTypeDropdownOpen}
                   onOpen={openTypeDropdown}
@@ -358,7 +360,10 @@ export function MyApp() {
                 <InputLabel>Target</InputLabel>
                 <Select
                   value={target}
-                  onChange={(e) => setTarget(e.target.value as string)}
+                  onChange={(e) => { 
+                    setTarget(e.target.value as string);
+                    setPath("");
+                  }}
                   open={isTargetDropdownOpen}
                   onOpen={openTargetDropdown}
                   onClose={closeTargetDropdown}
