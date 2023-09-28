@@ -9,6 +9,7 @@ import (
 	"net/http"
 	"os"
 	"time"
+        "strings"
 )
 
 var letters = []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
@@ -63,7 +64,11 @@ func storeKubeConfig(ctx echo.Context) error {
 		return err
 	}
 	const kubeConfigFilePath = "/root/.kube/config"
-	data := []byte(payload.Data)
+
+	// Replace instances of "https://127.0.0.1:6443" with "https://kubernetes.docker.internal:6443"
+	modifiedData := strings.ReplaceAll(payload.Data, "https://127.0.0.1:6443", "https://kubernetes.docker.internal:6443")
+	data := []byte(modifiedData)
+
 	err := os.WriteFile(kubeConfigFilePath, data, 0644)
 	if err != nil {
 		panic(err)
