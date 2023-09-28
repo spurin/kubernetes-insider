@@ -23,7 +23,9 @@ The `docker extension` cli is provided by default on the current versions of Doc
 
 Users can run the command below to install the extension, pulling the latest version and dependencies from Docker Hub -
 
-`docker extension install spurin/kubernetes-insider:latest`
+```
+docker extension install spurin/kubernetes-insider:latest
+```
 
 #### Marketplace
 
