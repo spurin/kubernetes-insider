@@ -152,7 +152,7 @@ function StarterPage() {
         </Button>
       </Box>
       <Typography variant="body1">
-      After executing the command - Select "Pod" as the Type, select "flappy-dock" as the Target, Set the Port to "80" and click Go
+      After executing the command - Select "default" as the Namespace, "Pod" as the Type, select "flappy-dock" as the Target, Set the Port to "80", leave Path as the default and click Go
       </Typography>
 
       <Divider variant="middle" style={{ width: '50%', marginTop: '1rem', marginBottom: '1rem' }} /> 
