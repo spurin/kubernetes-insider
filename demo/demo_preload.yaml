@@ -1,0 +1,89 @@
+# Owing to slow/intermittent connections, this yaml file can be used to warm up images
+# prior to a demo, use -
+#
+# kubectl apply -f demo_preload.yaml && kubectl wait --for=condition=Ready pod -l run=nginx --namespace=kube-public --timeout=600s && kubectl wait --for=condition=Ready pod -l run=nginx-debug --namespace=kube-public --timeout=600s && kubectl wait --for=condition=Ready pod -l run=flappy-dock --namespace=kube-public --timeout=600s && kubectl wait --for=condition=Ready pod -l run=nginx-blue --namespace=kube-public --timeout=600s && kubectl wait --for=condition=Ready pod -l run=nginx-red --namespace=kube-public --timeout=600s && kubectl delete -f demo_preload.yaml
+#
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: nginx
+  name: nginx
+  namespace: kube-public
+spec:
+  containers:
+  - image: nginx
+    name: nginx
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: flappy-dock
+  name: flappy-dock
+  namespace: kube-public
+spec:
+  containers:
+  - image: spurin/flappy-dock
+    name: flappy-dock
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: nginx-debug
+  name: nginx-debug
+  namespace: kube-public
+spec:
+  containers:
+  - image: spurin/nginx-debug
+    name: nginx-debug
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: nginx-blue
+  name: nginx-blue
+  namespace: kube-public
+spec:
+  containers:
+  - image: spurin/nginx-blue
+    name: nginx-blue
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: nginx-red
+  name: nginx-red
+  namespace: kube-public
+spec:
+  containers:
+  - image: spurin/nginx-red
+    name: nginx-red
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
