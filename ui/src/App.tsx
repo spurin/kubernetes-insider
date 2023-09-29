@@ -151,7 +151,7 @@ function StarterPage() {
           {copySuccess ? 'Copied!' : 'Copy'}
         </Button>
       </Box>
-      <Typography variant="body1">
+      <Typography variant="body1" style={{ width: '50%', textAlign: 'center' }}>
       After executing the command - Select "default" as the Namespace, "Pod" as the Type, select "flappy-dock" as the Target, Set the Port to "80", leave Path as the default and click Go
       </Typography>
 
